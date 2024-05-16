@@ -1,6 +1,6 @@
 var mierucaOptimize = function () {
 
-    this.protocol = window.location.protocol;
+    this.protocol = "http:";
 
     this.encodeValue = (value) => {
         return encodeURIComponent(value);
@@ -17,7 +17,7 @@ var mierucaOptimize = function () {
         cookie = [...valueSet].join(';');
         return cookie;
     };
-    
+
     this.getSessionIdFromCookie = (name) => {
         var cookies = document.cookie.split('; '),
         sessionId = '';
@@ -30,11 +30,11 @@ var mierucaOptimize = function () {
         }
         return sessionId;
     };
-    
+
     var siteId = window.__optimizeid[0][0],
     url = new URL(window.location.href),
     urlParams = url.searchParams,
-    "http://" = this."http://",
+    protocol = this.protocol,
     encodeValue = this.encodeValue,
     getCombineCookie = this.getCombineCookie;
 
@@ -58,7 +58,7 @@ var mierucaOptimize = function () {
         let a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
-        a.src = "http://" + 'localhost:8089/redirect-url/embed'
+        a.src = protocol + '//localhost:8089/redirect-url/embed'
         + '?siteId=' + encodeValue(siteId)
         + '&visitorUrl=' + encodeValue(url.toString())
         + '&dv=' + encodeValue(getDeviceType())
@@ -74,7 +74,7 @@ var mierucaOptimize = function () {
         let a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
-        a.src = "http://" + 'localhost:8089/ab/preview'
+        a.src = protocol + '//localhost:8089/ab/preview'
         + '?sId=' + encodeValue(siteId)
         + '&dv=' + encodeValue(device)
         + '&pId=' + encodeValue(urlParams.get('_mo_ab_preview_pid') || '');
@@ -85,7 +85,7 @@ var mierucaOptimize = function () {
         let a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
-        a.src = "http://" + 'localhost:8089/ab/embed'
+        a.src = protocol + '//localhost:8089/ab/embed'
         + '?siteId=' + encodeValue(siteId)
         + '&visitorUrl=' + encodeValue(url.toString())
         + '&dv=' + encodeValue(getDeviceType())
@@ -99,7 +99,7 @@ var mierucaOptimize = function () {
         let a = document.createElement('script');
         a.type = 'text/javascript';
         a.async = true;
-        a.src = "http://" + 'localhost:8089/ab/view'
+        a.src = protocol + '//localhost:8089/ab/view'
         + '?sId=' + encodeValue(siteId)
         + '&visitorUrl=' + encodeValue(url.toString())
         + '&pId=' + encodeValue(urlParams.get('_mo_ab_preview_mode') || '')

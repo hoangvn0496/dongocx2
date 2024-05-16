@@ -1,6 +1,6 @@
 var mierucaOptimize = function () {
 
-    this."http://" = window.location."http://";
+    this.protocol = window.location.protocol;
 
     this.encodeValue = (value) => {
         return encodeURIComponent(value);
